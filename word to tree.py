@@ -43,7 +43,7 @@ def decomposed_words_dict(words_list):
             tempDict[ltr] = tempDict.get(ltr, 0) + 1
         print(tempDict)
         # Assigning the subdictionnary to the word key
-        words_dict[word]=sorted(tempDict)
+        words_dict[word]=tempDict
         
     return words_dict
     
