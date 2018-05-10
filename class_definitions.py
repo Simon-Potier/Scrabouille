@@ -87,24 +87,20 @@ def wordScore(word):
     return score
         
 def validWord(word,wordList):
-    low = wordList[0]
-    print('low is : ' + low)
-    high = wordList[-1]
-    print('high is : ' + high)
-    mid = wordList[len(wordList)//2]
-    print('mid is : ' + mid)
-    if mid == word or low == word or high == word :
+    if len(wordList) == 2 and word in wordList :
         return True
-    elif len(wordList) == 1 and word != wordList[0] or :
+    elif len(wordList) == 2 and word not in wordList  :
         return False
     else :
-        if word > mid:
-            return validWord(word,wordList[len(wordList)//2+1:-1])
+        if word == wordList[len(wordList)//2]:
+            return True
+        if word > wordList[len(wordList)//2]:
+            return validWord(word,wordList[len(wordList)//2:])
         else :
-            return validWord(word,wordList[0:len(wordList)//2-1])
+            return validWord(word,wordList[0:len(wordList)//2+1])
     
-
 wordList = load_words_list('ODS6.txt')
+
 
 
 
