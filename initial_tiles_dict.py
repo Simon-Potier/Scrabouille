@@ -11,4 +11,17 @@ initial_tiles_dict = {}
 for i in string.ascii_lowercase:
     initial_tiles_dict[i] = [int(tiles_dict[i][0]),int(tiles_dict[i][1])]
 initial_tiles_dict['blank']=[0,2]
-print(initial_tiles_dict)
+
+
+tiles_dict_values = {}
+for i in tiles_dict.keys():
+    tiles_dict_values[i] = int(tiles_dict[i][0])
+
+print(tiles_dict_values)
+
+tilesList = []
+for i  in tiles_dict.keys():
+    for j in range(int(tiles_dict[i][1])):
+        tilesList.append(i)
+        
+print(tilesList)
