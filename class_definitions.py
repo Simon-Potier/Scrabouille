@@ -86,7 +86,7 @@ def wordScore(word):
     
     return score
         
-def validWord(word,wordList):
+def validWord(word ,wordList):
     if len(wordList) == 2 and word in wordList :
         return True
     elif len(wordList) == 2 and word not in wordList  :
@@ -101,30 +101,35 @@ def validWord(word,wordList):
     
 wordList = load_words_list('ODS6.txt')
 
+def validSetting(Tiles):
+    pass
 
-
-
-# =============================================================================
-# class Tiles(object):
-#     def __init__(self,letter,value,remainder):
-#         self.letter = letter
-#         self.value = value
-#         self.remainder = remainder
-#     
-#     def __str__(self):
-#         ans = letter + 'Pt: ' + value + 'Remains: ' + remainder
-#         return ans
-#     
-#     def initialize_list():
-#         pass
-# =============================================================================
-
-
-
+class Location(object):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def getX(self):
+        return self.x
+    def getY(self):
+        return self.y
+    def distance(self, other):
+        return ((self.x - other.x)**2 + (self.y - other.y)**2)**0.5
+    def __eq__(self, other):
+        return (self.x == other.x and self.y == other.y)
+    def move(self ,destination):
+        self.x = destination.x
+        self.y = destination.y
+        return Location(self.x, self.y)
+    def __str__(self):
+        return '(' + str(self.x) + ',' + str(self.y) + ')'
         
         
-        
-        
-        
-        
-        
+class Tiles(object):
+    def __init__(self,letter, location = Location(0,0)):
+        self.letter = letter
+        self.location = location
+    def __str__(self):
+        return str(self.letter) + ' : ' + self.location.__str__()
+    def moveLoc(self, destination):
+        self.location = destination
+    
